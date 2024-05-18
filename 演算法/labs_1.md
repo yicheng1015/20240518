@@ -1,4 +1,4 @@
-# GenAI_Algorithm_lab1 ==> heap sort的各種實作(heap sort)
+# GenAI_Algorithm_lab1 ==> heap sort的各種實作
 - `提問詞`:請寫出heap sort的演算法
 - `提問詞`:請計算heap sort演算法的時間複雜度
 - `提問詞`:請用Python寫出heap sort的演算法
