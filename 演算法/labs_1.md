@@ -61,8 +61,7 @@ Array.prototype.heap_sort = function() {
         max_heapify(0, i);
     }
 
-    return arr;
-};
+    return arr;};
 
 const inputArray = [3, 5, 3, 0, 8, 6, 1, 5, 8, 6, 2, 4, 9, 4, 7, 0, 1, 8, 9, 7, 3, 1, 2, 5, 9, 7, 4, 0, 2, 6];
 const sortedArray = inputArray.heap_sort();
