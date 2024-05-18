@@ -71,3 +71,35 @@ console.log(sortedArray);
 '''
 Online Python Interpreter
   - [Online Python Compiler - Programiz](https://www.programiz.com/python-programming/online-compiler/)
+
+
+以下是Heap Sort（堆積排序）的Python實現：
+
+Python
+
+def heapify(arr, n, i):
+    largest = i
+    left = 2 * i + 1
+    right = 2 * i + 2
+
+    if left < n and arr[i] < arr[left]:
+        largest = left
+
+    if right < n and arr[largest] < arr[right]:
+        largest = right
+
+    if largest != i:
+        arr[i], arr[largest] = arr[largest], arr[i]
+        heapify(arr, n, largest)
+
+def heapSort(arr):
+    n = len(arr)
+
+    for i in range(n//2 - 1, -1, -1):
+        heapify(arr, n, i)
+
+    for i in range(n-1, 0, -1):
+        arr[i], arr[0] = arr[0], arr[i]
+        heapify(arr, i, 0)
+AI 產生的代碼。請仔細檢視及使用。 深入了解常見問題集。
+這個程式碼首先建立一個最大堆積，然後將堆積的根節點（最大值）與最後一個元素交換，並將堆積大小減一。然後再次將剩餘元素heapify，並重複此過程，直到所有元素都已排序。這就是Heap Sort的基本工作原理。
