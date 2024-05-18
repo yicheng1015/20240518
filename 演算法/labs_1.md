@@ -67,8 +67,7 @@ Array.prototype.heap_sort = function() {
 const inputArray = [3, 5, 3, 0, 8, 6, 1, 5, 8, 6, 2, 4, 9, 4, 7, 0, 1, 8, 9, 7, 3, 1, 2, 5, 9, 7, 4, 0, 2, 6];
 const sortedArray = inputArray.heap_sort();
 console.log(sortedArray);
-AI 產生的代碼。請仔細檢視及使用。 深入了解常見問題集。
-這段程式碼示範了如何使用堆積排序將一個陣列排序。您可以根據需要調整程式碼，例如改成其他語言的實作。
+
 '''
 Online Python Interpreter
   - [Online Python Compiler (Interpreter) - Programiz](https://www.programiz.com/python-programming/online-compiler/)
