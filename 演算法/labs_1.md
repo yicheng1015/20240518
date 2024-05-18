@@ -12,61 +12,55 @@
 
   
 '''
-堆積排序（Heap Sort）是一種利用堆積（Heap）結構來完成排序的演算法。讓我為您簡要介紹一下堆積排序的原理和程式碼範例。
+以下是Heap Sort的演算法步驟：
 
-概念：
-堆積排序使用最大堆積（Max Heap）或最小堆積（Min Heap）來排序。
-最大堆積：父節點的值大於子節點的值。
-最小堆積：父節點的值小於子節點的值。
-步驟：
-建立最大堆積：將待排序的陣列轉換成最大堆積。
-交換根節點和最後一個節點，然後縮小堆積範圍。
-重複上述步驟，直到整個陣列排序完成。
-程式碼範例（JavaScript）：
-JavaScript
+建立最大堆(Max Heap)：將未排序的數組視為一個完全二元樹，從最後一個非葉子節點開始，對每個節點進行調整，使得該節點和其子節點滿足最大堆的性質，即父節點的值大於等於子節點的值。
 
-Array.prototype.heap_sort = function() {
-    const arr = this.slice(0);
+排序：將最大堆的根節點（即數組的第一個元素）與最後一個節點交換位置，然後將除了最後一個節點外的部分重新調整為最大堆。這樣就將最大的元素放到了最後一個位置。重複這個步驟，直到所有的節點都已經放到了正確的位置，最終得到一個有序的數組。
 
-    function swap(i, j) {
-        const tmp = arr[i];
-        arr[i] = arr[j];
-        arr[j] = tmp;
-    }
+這是Heap Sort的基本流程，下面是一個Python實現：
 
-    function max_heapify(start, end) {
-        const dad = start;
-        let son = dad * 2 + 1;
+python
+Copy code
+def heapify(arr, n, i):
+    largest = i  # 將最大值初始化為父節點
+    left = 2 * i + 1
+    right = 2 * i + 2
 
-        if (son >= end) return;
+    # 如果左子節點存在且大於根節點
+    if left < n and arr[left] > arr[largest]:
+        largest = left
 
-        if (son + 1 < end && arr[son] < arr[son + 1]) {
-            son++;
-        }
+    # 如果右子節點存在且大於根節點
+    if right < n and arr[right] > arr[largest]:
+        largest = right
 
-        if (arr[dad] < arr[son]) {
-            swap(dad, son);
-            max_heapify(son, end);
-        }
-    }
+    # 如果最大值不是父節點，則交換並重新調整子樹
+    if largest != i:
+        arr[i], arr[largest] = arr[largest], arr[i]
+        heapify(arr, n, largest)
 
-    const len = arr.length;
+def heap_sort(arr):
+    n = len(arr)
 
-    for (let i = Math.floor(len / 2) - 1; i >= 0; i--) {
-        max_heapify(i, len);
-    }
+    # 建立最大堆
+    for i in range(n // 2 - 1, -1, -1):
+        heapify(arr, n, i)
 
-    for (let i = len - 1; i > 0; i--) {
-        swap(0, i);
-        max_heapify(0, i);
-    }
+    # 逐步取出最大值，並調整堆
+    for i in range(n - 1, 0, -1):
+        arr[i], arr[0] = arr[0], arr[i]  # 將最大值移動到最後
+        heapify(arr, i, 0)
 
-    return arr;
-    };
+# 測試
+arr = [12, 11, 13, 5, 6, 7]
+heap_sort(arr)
+print("排序後的數組：", arr)
+這個演算法的時間複雜度是O(n log n)，其中n是數組的大小。
 
-const inputArray = [3, 5, 3, 0, 8, 6, 1, 5, 8, 6, 2, 4, 9, 4, 7, 0, 1, 8, 9, 7, 3, 1, 2, 5, 9, 7, 4, 0, 2, 6];
-const sortedArray = inputArray.heap_sort();
-console.log(sortedArray);
+
+
+
 
 '''
 Online Python Interpreter
